@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gold Blade — барбершоп</title>
+  <meta name="description" content="Мужские стрижки, уход за бородой и классическое бритьё опасной бритвой. Запись онлайн.">
+  <meta name="theme-color" content="#1c1b19">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+  <!-- ===== SVG-спрайт иконок ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2a1 1 0 011-.25 11.4 11.4 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 119.5 9 2.5 2.5 0 0112 11.5z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M21.5 4.5L2.9 11.7c-.9.35-.88.85-.16 1.07l4.77 1.49 1.84 5.6c.22.6.11.84.74.84.49 0 .7-.22.97-.49l2.3-2.24 4.8 3.54c.88.49 1.52.24 1.74-.82L22.9 5.9c.32-1.29-.49-1.88-1.4-1.4z"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7a11.200 11.200 0 01-4.600-4.100c-.5-.7-1.400-1.900-1.400-3.600 0-1.700.9-2.500 1.200-2.800.3-.3.700-.4.900-.4h.6c.2 0 .5-.1.700.5l1 2.300c.1.200.1.400 0 .6l-.4.700c-.2.200-.4.400-.2.800.2.400.9 1.500 2 2.400 1.300 1.100 2.400 1.500 2.800 1.700.4.200.6.100.8-.1l.9-1.100c.2-.3.500-.2.800-.1l2.200 1.100c.3.200.5.200.6.400.1.100.1.800-.2 1.600z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3 6.9 7.500.7-5.700 5 1.700 7.400L12 18l-6.500 4 1.700-7.400-5.700-5 7.500-.7z"/></symbol>
+    <symbol id="i-zoom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.500-4.500M11 8v6M8 11h6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.500 4.500L19 7.500"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></symbol>
+    <symbol id="i-scissors" viewBox="0 0 220 200" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><circle cx="38" cy="52" r="20"/><circle cx="38" cy="148" r="20"/><path d="M52 66L92 94M52 134L92 106"/><path d="M90 90L206 148 204 156 84 104zM90 110L206 52 204 44 84 96z"/></symbol>
+  </svg>
+
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <!-- ===== ШАПКА ===== -->
+  <header class="header" id="header">
+    <div class="container header__in">
+      <a class="logo" href="#home" aria-label="Gold Blade — на главную">
+        <svg class="logo__icon" aria-hidden="true"><use href="#i-scissors"/></svg>
+        <span class="logo__text">Gold Blade</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Главное меню">
+        <div class="lang lang--nav" role="group" aria-label="Language">
+          <button type="button" data-lang="ru" class="is-active">RU</button>
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="kk">ҚАЗ</button>
+        </div>
+        <ul class="nav__list">
+          <li><a href="#services" data-i18n="nav.services">Услуги</a></li>
+          <li><a href="#team" data-i18n="nav.team">Мастера</a></li>
+          <li><a href="#gallery" data-i18n="nav.gallery">Работы</a></li>
+          <li><a href="#reviews" data-i18n="nav.reviews">Отзывы</a></li>
+          <li><a href="#contacts" data-i18n="nav.contacts">Контакты</a></li>
+          <li class="nav__cta"><a class="btn btn--primary" href="#contacts" data-i18n="cta.book">Записаться</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__tools">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="ru" class="is-active">RU</button>
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="kk">ҚАЗ</button>
+        </div>
+        <a class="btn btn--primary btn--sm header__cta" href="#contacts" data-i18n="cta.book">Записаться</a>
+        <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+      <div class="hero__bg ph" data-label="images/hero.jpg">
+        <img src="images/hero.jpg" alt="" fetchpriority="high">
+      </div>
+      <div class="hero__shade"></div>
+
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="hero__tag" data-i18n="hero.tag">Барбершоп</p>
+          <h1 class="hero__title" aria-label="Gold Blade">
+            <span class="line"><span>Gold</span></span>
+            <span class="line"><span>Blade</span></span>
+          </h1>
+          <p class="hero__text" data-i18n="hero.text">Мужские стрижки, уход за бородой и классическое бритьё опасной бритвой.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#contacts" data-i18n="cta.book">Записаться</a>
+            <a class="btn btn--ghost" href="#services" data-i18n="hero.more">Услуги и цены</a>
+          </div>
+        </div>
+
+        <div class="hero__art" aria-hidden="true">
+          <svg class="scissors" viewBox="0 0 220 200">
+            <g class="blade blade--a">
+              <circle cx="38" cy="52" r="20" class="ring"/>
+              <path d="M52 66L92 94" class="bar"/>
+              <path d="M90 90L206 148 204 156 84 104z" class="steel"/>
+            </g>
+            <g class="blade blade--b">
+              <circle cx="38" cy="148" r="20" class="ring"/>
+              <path d="M52 134L92 106" class="bar"/>
+              <path d="M90 110L206 52 204 44 84 96z" class="steel"/>
+            </g>
+            <circle cx="96" cy="100" r="5" class="pivot"/>
+          </svg>
+          <div class="badge">
+            <svg viewBox="0 0 120 120">
+              <defs><path id="badge-circle" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs>
+              <circle cx="60" cy="60" r="57" class="badge__ring"/>
+              <text class="badge__text"><textPath href="#badge-circle" startOffset="0" textLength="272" lengthAdjust="spacing">Barbershop • Since 2022 • </textPath></text>
+              <use href="#i-scissors" x="34" y="34" width="52" height="52" class="badge__icon"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <ul class="hero__info">
+          <li class="status" id="status"><span class="dot" aria-hidden="true"></span><span id="status-text">Ежедневно 10:00–21:00</span></li>
+          <li><svg class="icon icon--gold" aria-hidden="true"><use href="#i-clock"/></svg><span data-i18n="ct.hours.v">Ежедневно 10:00–21:00</span></li>
+          <li><svg class="icon icon--gold" aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="ct.addr.v">г. Алматы, ул. Примерная, 12</span></li>
+          <li><svg class="icon icon--gold" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+77000000000">+7 (700) 000-00-00</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== ЦИФРЫ ===== -->
+    <section class="stats" aria-label="Gold Blade">
+      <div class="container stats__grid">
+        <div class="stat"><b data-count="4" data-suffix="+">4+</b><span data-i18n="sx.years">лет с вами</span></div>
+        <div class="stat"><b data-count="5000" data-suffix="+">5 000+</b><span data-i18n="sx.clients">довольных клиентов</span></div>
+        <div class="stat"><b data-count="4">4</b><span data-i18n="sx.masters">мастера в команде</span></div>
+        <div class="stat"><b data-count="4.9" data-decimals="1">4.9</b><span data-i18n="sx.rating">средняя оценка</span></div>
+      </div>
+    </section>
+
+    <!-- ===== УСЛУГИ ===== -->
+    <section class="section" id="services">
+      <div class="container">
+        <header class="sec-head">
+          <h2 data-i18n="sv.title">Услуги и цены</h2>
+          <p data-i18n="sv.sub">Честные цены, без скрытых доплат.</p>
+        </header>
+
+        <div class="filter" role="group" aria-label="Filter">
+          <button type="button" class="is-active" data-filter="all" aria-pressed="true" data-i18n="f.all">Все</button>
+          <button type="button" data-filter="hair" aria-pressed="false" data-i18n="f.hair">Стрижки</button>
+          <button type="button" data-filter="beard" aria-pressed="false" data-i18n="f.beard">Борода и бритьё</button>
+          <button type="button" data-filter="care" aria-pressed="false" data-i18n="f.care">Уход</button>
+        </div>
+
+        <div class="services" id="services-grid">
+          <article class="card service" data-id="1" data-cat="hair" data-price="7000" data-time="60">
+            <h3 data-i18n="sv1.t">Классическая стрижка</h3>
+            <p data-i18n="sv1.d">Ножницы и машинка, мытьё головы, укладка.</p>
+            <button class="service__add" type="button" aria-pressed="false"><svg class="icon ic-plus" aria-hidden="true"><use href="#i-plus"/></svg><svg class="icon ic-check" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pk.add">Добавить</span></button>
+            <div class="service__foot"><span class="service__time">60 <span data-i18n="unit.min">мин</span></span><span class="service__price">7 000 ₸</span></div>
+          </article>
+          <article class="card service" data-id="2" data-cat="beard" data-price="4000" data-time="30">
+            <h3 data-i18n="sv2.t">Оформление бороды</h3>
+            <p data-i18n="sv2.d">Форма, чёткий контур и уход маслом.</p>
+            <button class="service__add" type="button" aria-pressed="false"><svg class="icon ic-plus" aria-hidden="true"><use href="#i-plus"/></svg><svg class="icon ic-check" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pk.add">Добавить</span></button>
+            <div class="service__foot"><span class="service__time">30 <span data-i18n="unit.min">мин</span></span><span class="service__price">4 000 ₸</span></div>
+          </article>
+          <article class="card service" data-id="3" data-cat="beard" data-price="5000" data-time="40">
+            <h3 data-i18n="sv3.t">Бритьё опасной бритвой</h3>
+            <p data-i18n="sv3.d">Горячее полотенце, пена и классическое бритьё.</p>
+            <button class="service__add" type="button" aria-pressed="false"><svg class="icon ic-plus" aria-hidden="true"><use href="#i-plus"/></svg><svg class="icon ic-check" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pk.add">Добавить</span></button>
+            <div class="service__foot"><span class="service__time">40 <span data-i18n="unit.min">мин</span></span><span class="service__price">5 000 ₸</span></div>
+          </article>
+          <article class="card service service--hit" data-id="4" data-cat="hair beard" data-price="10000" data-time="90">
+            <h3 data-i18n="sv4.t">Стрижка + борода</h3>
+            <p data-i18n="sv4.d">Полный образ за один визит — выгоднее, чем по отдельности.</p>
+            <button class="service__add" type="button" aria-pressed="false"><svg class="icon ic-plus" aria-hidden="true"><use href="#i-plus"/></svg><svg class="icon ic-check" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pk.add">Добавить</span></button>
+            <div class="service__foot"><span class="service__time">90 <span data-i18n="unit.min">мин</span></span><span class="service__price">10 000 ₸</span></div>
+          </article>
+          <article class="card service" data-id="5" data-cat="care" data-price="8000" data-time="30">
+            <h3 data-i18n="sv5.t">Уход за волосами</h3>
+            <p data-i18n="sv5.d">Маска, питание и восстановление после мытья.</p>
+            <button class="service__add" type="button" aria-pressed="false"><svg class="icon ic-plus" aria-hidden="true"><use href="#i-plus"/></svg><svg class="icon ic-check" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pk.add">Добавить</span></button>
+            <div class="service__foot"><span class="service__time">30 <span data-i18n="unit.min">мин</span></span><span class="service__price">8 000 ₸</span></div>
+          </article>
+          <article class="card service" data-id="6" data-cat="care" data-price="3000" data-time="20">
+            <h3 data-i18n="sv6.t">Массаж головы</h3>
+            <p data-i18n="sv6.d">Снимает напряжение после рабочего дня.</p>
+            <button class="service__add" type="button" aria-pressed="false"><svg class="icon ic-plus" aria-hidden="true"><use href="#i-plus"/></svg><svg class="icon ic-check" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pk.add">Добавить</span></button>
+            <div class="service__foot"><span class="service__time">20 <span data-i18n="unit.min">мин</span></span><span class="service__price">3 000 ₸</span></div>
+          </article>
+        </div>
+        <p class="note" data-i18n="sv.note">Цены ориентировочные и зависят от длины и сложности.</p>
+      </div>
+    </section>
+
+    <!-- ===== МАСТЕРА ===== -->
+    <section class="section section--alt" id="team">
+      <div class="container">
+        <header class="sec-head">
+          <h2 data-i18n="tm.title">Наши мастера</h2>
+          <p data-i18n="tm.sub">У каждого свой почерк и годы практики.</p>
+        </header>
+
+        <div class="team">
+          <article class="master">
+            <div class="master__photo ph" data-label="images/team/master-1.jpg"><img src="images/team/master-1.jpg" alt="Arman" loading="lazy"></div>
+            <div class="master__info">
+              <h3 data-i18n="n1">Арман</h3>
+              <p class="master__role" data-i18n="role.senior">Старший барбер</p>
+              <p class="master__exp">8+ <span data-i18n="tm.exp">лет опыта</span></p>
+              <a class="master__social" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+            </div>
+          </article>
+          <article class="master">
+            <div class="master__photo ph" data-label="images/team/master-2.jpg"><img src="images/team/master-2.jpg" alt="Damir" loading="lazy"></div>
+            <div class="master__info">
+              <h3 data-i18n="n2">Дамир</h3>
+              <p class="master__role" data-i18n="role.barber">Барбер</p>
+              <p class="master__exp">5+ <span data-i18n="tm.exp">лет опыта</span></p>
+              <a class="master__social" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+            </div>
+          </article>
+          <article class="master">
+            <div class="master__photo ph" data-label="images/team/master-3.jpg"><img src="images/team/master-3.jpg" alt="Timur" loading="lazy"></div>
+            <div class="master__info">
+              <h3 data-i18n="n3">Тимур</h3>
+              <p class="master__role" data-i18n="role.beard">Мастер по бороде</p>
+              <p class="master__exp">4+ <span data-i18n="tm.exp">лет опыта</span></p>
+              <a class="master__social" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+            </div>
+          </article>
+          <article class="master">
+            <div class="master__photo ph" data-label="images/team/master-4.jpg"><img src="images/team/master-4.jpg" alt="Aliya" loading="lazy"></div>
+            <div class="master__info">
+              <h3 data-i18n="n4">Алия</h3>
+              <p class="master__role" data-i18n="role.junior">Джуниор барбер</p>
+              <p class="master__exp">2+ <span data-i18n="tm.exp">лет опыта</span></p>
+              <a class="master__social" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ГАЛЕРЕЯ ===== -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <header class="sec-head sec-head--row">
+          <div>
+            <h2 data-i18n="gl.title">Наши работы</h2>
+            <p data-i18n="gl.sub">Стрижки, бороды и бритьё — прямо из кресла.</p>
+          </div>
+          <a class="btn btn--ghost" href="https://instagram.com/" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>
+            <span data-i18n="gl.follow">Больше работ в Instagram</span>
+          </a>
+        </header>
+
+        <div class="gallery">
+          <figure class="g g1 ph" data-label="images/gallery/work-1.jpg"><img src="images/gallery/work-1.jpg" alt="Work 1" loading="lazy"><span class="g__zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></figure>
+          <figure class="g g2 ph" data-label="images/gallery/work-2.jpg"><img src="images/gallery/work-2.jpg" alt="Work 2" loading="lazy"><span class="g__zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></figure>
+          <figure class="g g3 ph" data-label="images/gallery/work-3.jpg"><img src="images/gallery/work-3.jpg" alt="Work 3" loading="lazy"><span class="g__zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></figure>
+          <figure class="g g4 ph" data-label="images/gallery/work-4.jpg"><img src="images/gallery/work-4.jpg" alt="Work 4" loading="lazy"><span class="g__zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></figure>
+          <figure class="g g5 ph" data-label="images/gallery/work-5.jpg"><img src="images/gallery/work-5.jpg" alt="Work 5" loading="lazy"><span class="g__zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></figure>
+          <figure class="g g6 ph" data-label="images/gallery/work-6.jpg"><img src="images/gallery/work-6.jpg" alt="Work 6" loading="lazy"><span class="g__zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></figure>
+          <figure class="g g7 ph" data-label="images/gallery/work-7.jpg"><img src="images/gallery/work-7.jpg" alt="Work 7" loading="lazy"><span class="g__zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></figure>
+          <figure class="g g8 ph" data-label="images/gallery/work-8.jpg"><img src="images/gallery/work-8.jpg" alt="Work 8" loading="lazy"><span class="g__zoom"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg></span></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ОТЗЫВЫ ===== -->
+    <section class="section section--alt" id="reviews">
+      <div class="container">
+        <header class="sec-head sec-head--row">
+          <div>
+            <h2 data-i18n="rv.title">Отзывы клиентов</h2>
+          </div>
+          <div class="score">
+            <span class="score__num">4.9</span>
+            <span class="stars" aria-hidden="true">
+              <svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg>
+            </span>
+            <span class="score__label" data-i18n="rv.score">средняя оценка</span>
+          </div>
+        </header>
+
+        <div class="slider" id="slider">
+          <div class="slider__track" id="slider-track" tabindex="0" aria-label="Reviews">
+            <blockquote class="card review slide">
+              <span class="stars" aria-label="5/5"><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg></span>
+              <p data-i18n="rv1">Лучшая стрижка за последние годы. Мастер выслушал и предложил форму под моё лицо — результат огонь.</p>
+              <footer><span class="avatar">Д</span><cite data-i18n="rn1">Данияр</cite></footer>
+            </blockquote>
+            <blockquote class="card review slide">
+              <span class="stars" aria-label="5/5"><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg></span>
+              <p data-i18n="rv2">Бритьё с горячим полотенцем — отдельное удовольствие. Атмосфера, музыка, кофе. Приду ещё.</p>
+              <footer><span class="avatar">М</span><cite data-i18n="rn2">Максим</cite></footer>
+            </blockquote>
+            <blockquote class="card review slide">
+              <span class="stars" aria-label="5/5"><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg></span>
+              <p data-i18n="rv3">Записался за минуту и не ждал ни минуты. Борода наконец выглядит так, как я хотел.</p>
+              <footer><span class="avatar">Е</span><cite data-i18n="rn3">Ерлан</cite></footer>
+            </blockquote>
+            <blockquote class="card review slide">
+              <span class="stars" aria-label="5/5"><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg></span>
+              <p data-i18n="rv4">Хожу сюда второй год. Всегда вовремя, всегда чисто, мастера знают своё дело.</p>
+              <footer><span class="avatar">А</span><cite data-i18n="rn4">Алихан</cite></footer>
+            </blockquote>
+            <blockquote class="card review slide">
+              <span class="stars" aria-label="5/5"><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg></span>
+              <p data-i18n="rv5">Привёл сына на первую стрижку — мастер нашёл подход, ребёнок вышел довольный.</p>
+              <footer><span class="avatar">С</span><cite data-i18n="rn5">Сергей</cite></footer>
+            </blockquote>
+            <blockquote class="card review slide">
+              <span class="stars" aria-label="5/5"><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg></span>
+              <p data-i18n="rv6">Хороший свет, удобные кресла и аккуратная работа. Лучший барбершоп в районе.</p>
+              <footer><span class="avatar">Н</span><cite data-i18n="rn6">Нурлан</cite></footer>
+            </blockquote>
+          </div>
+          <div class="slider__ctrl">
+            <button class="slider__btn slider__btn--prev" id="sl-prev" type="button" aria-label="Previous"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+            <div class="slider__dots" id="sl-dots"></div>
+            <button class="slider__btn" id="sl-next" type="button" aria-label="Next"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== КОНТАКТЫ ===== -->
+    <section class="section" id="contacts">
+      <div class="container">
+        <header class="sec-head">
+          <h2 data-i18n="ct.title">Как записаться</h2>
+          <p data-i18n="ct.text">Позвони или напиши в мессенджер — подберём удобное время.</p>
+        </header>
+
+        <div class="contacts">
+          <div class="contacts__info">
+            <ul class="contacts__list">
+              <li>
+                <svg class="icon icon--gold" aria-hidden="true"><use href="#i-pin"/></svg>
+                <div><span class="label" data-i18n="ct.addr.l">Адрес</span><strong data-i18n="ct.addr.v">г. Алматы, ул. Примерная, 12</strong></div>
+              </li>
+              <li>
+                <svg class="icon icon--gold" aria-hidden="true"><use href="#i-phone"/></svg>
+                <div><span class="label" data-i18n="ct.phone.l">Телефон</span><a href="tel:+77000000000"><strong>+7 (700) 000-00-00</strong></a></div>
+              </li>
+              <li>
+                <svg class="icon icon--gold" aria-hidden="true"><use href="#i-clock"/></svg>
+                <div><span class="label" data-i18n="ct.hours.l">Часы работы</span><strong data-i18n="ct.hours.v">Ежедневно 10:00–21:00</strong></div>
+              </li>
+            </ul>
+
+            <div class="picked" id="picked" hidden>
+              <p class="label" data-i18n="pk.yours">Ваш выбор</p>
+              <ul id="picked-list"></ul>
+              <p class="picked__total" id="picked-total"></p>
+            </div>
+
+            <div class="contacts__btns">
+              <a class="btn btn--primary" href="tel:+77000000000"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span data-i18n="ct.call">Позвонить</span></a>
+              <a class="btn btn--ghost" id="wa-link" data-base="https://wa.me/77000000000" href="https://wa.me/77000000000" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+              <a class="btn btn--ghost" href="https://t.me/username" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg>Telegram</a>
+            </div>
+          </div>
+
+          <div class="contacts__map">
+            <iframe title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=Almaty%2C%20Kazakhstan&z=13&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== ПОДВАЛ ===== -->
+  <footer class="footer">
+    <div class="container footer__in">
+      <a class="logo" href="#home" aria-label="Gold Blade">
+        <svg class="logo__icon" aria-hidden="true"><use href="#i-scissors"/></svg>
+        <span class="logo__text">Gold Blade</span>
+      </a>
+      <p class="footer__copy">© <span id="year">2026</span> Gold Blade. <span data-i18n="ft.rights">Все права защищены.</span></p>
+      <div class="footer__social">
+        <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon"><use href="#i-instagram"/></svg></a>
+        <a href="https://t.me/username" target="_blank" rel="noopener" aria-label="Telegram"><svg class="icon"><use href="#i-telegram"/></svg></a>
+        <a href="https://wa.me/77000000000" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="icon"><use href="#i-whatsapp"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Лайтбокс для галереи -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox__close" type="button" aria-label="Close">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Previous"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+    <img src="" alt="">
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Next"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+    <span class="lightbox__count" id="lb-count"></span>
+  </div>
+
+  <!-- Панель «Мой визит»: появляется, когда выбрана хотя бы одна услуга -->
+  <div class="picker" id="picker" aria-live="polite">
+    <div class="container picker__in">
+      <div class="picker__sum">
+        <span><span data-i18n="pk.selected">Выбрано</span>: <b id="pk-count">0</b></span>
+        <span class="picker__total"><b id="pk-total">0 ₸</b><small id="pk-time"></small></span>
+      </div>
+      <div class="picker__btns">
+        <button type="button" class="btn btn--ghost btn--sm" id="pk-clear" data-i18n="pk.clear">Сбросить</button>
+        <a class="btn btn--primary btn--sm" href="#contacts" data-i18n="cta.book">Записаться</a>
+      </div>
+    </div>
+  </div>
+
+  <button class="to-top" id="to-top" type="button" aria-label="Back to top"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+
+  <script src="js/i18n.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
